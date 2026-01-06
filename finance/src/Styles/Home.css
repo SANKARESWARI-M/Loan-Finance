@@ -1,0 +1,45 @@
+/* GoldForm.css */
+
+/* Center everything in the page */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f5f5;
+  height: 100%;
+}
+
+button {
+  display: block;
+  width: 200px;
+  padding: 15px 20px;
+  margin: 20px auto;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(45deg, #f59e0b, #d97706); /* gold gradient */
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Optional: make the container take full screen */
+body > div, body > main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}

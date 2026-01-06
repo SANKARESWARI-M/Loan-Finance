@@ -11,6 +11,7 @@ function Payment() {
   const [loans, setLoans] = useState([]);
 
   // Search by Customer ID
+  // http://localhost:5000
   const searchByCustomer = async () => {
     if (!customerId) return alert("Enter Customer ID");
 
