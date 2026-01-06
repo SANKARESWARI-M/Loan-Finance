@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../Styles/ledger.css";
+const API_URL = process.env.REACT_APP_API_URL; 
 
 function Payment() {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ function Payment() {
 
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/loans/by-customer/${customerId.trim()}`
+        `${API_URL}/api/loans/by-customer/${customerId.trim()}`
       );
       setLoans(res.data);
     } catch (err) {
@@ -30,7 +31,7 @@ function Payment() {
 
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/loans/by-loan/${loanSearchId.trim()}`
+        `${API_URL}/api/loans/by-loan/${loanSearchId.trim()}`
       );
       setLoans([res.data]); // wrap single loan into array
     } catch (err) {

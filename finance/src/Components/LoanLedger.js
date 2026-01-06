@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import "../Styles/ledger.css";
+const API_URL = process.env.REACT_APP_API_URL; 
 
 function Ledger() {
   const { loanId } = useParams();
@@ -21,10 +22,10 @@ function Ledger() {
   useEffect(() => {
     const fetchLedger = async () => {
       try {
-        const resLedger = await axios.get(`http://localhost:5000/api/ledger/${loanId}`);
+        const resLedger = await axios.get(`${API_URL}/api/ledger/${loanId}`);
         setLedgerEntries(resLedger.data);
 
-        const resLoan = await axios.get(`http://localhost:5000/api/loans/by-loan/${loanId}`);
+        const resLoan = await axios.get(`${API_URL}/api/loans/by-loan/${loanId}`);
         setLoanDetails(resLoan.data);
       } catch (err) {
         console.error(err);
@@ -42,7 +43,7 @@ function Ledger() {
     }
 
     try {
-      const res = await axios.post("http://localhost:5000/api/ledger/add", {
+      const res = await axios.post(`${API_URL}/api/ledger/add`, {
         loanId,
         type: newTransaction.type,
         amount: Number(newTransaction.amount),

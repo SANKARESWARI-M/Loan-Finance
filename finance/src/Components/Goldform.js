@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "../Styles/GoldForm.css";
 import { useNavigate } from "react-router-dom";
+const API_URL = process.env.REACT_APP_API_URL; 
 
 
 function GoldLoanForm() {
@@ -31,7 +32,7 @@ function GoldLoanForm() {
 
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/users/${formData.customerId}`
+        `${API_URL}/api/users/${formData.customerId}`
       );
 
       setFormData(prev => ({
@@ -60,7 +61,7 @@ function GoldLoanForm() {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/loans/create",
+        `${API_URL}/api/loans/create`,
         {
           customerId: formData.customerId,
           loanAmount: formData.loanAmount,

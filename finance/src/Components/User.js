@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "../Styles/GoldForm.css";
+const API_URL = process.env.REACT_APP_API_URL; 
 
 function NewUser() {
   const [user, setUser] = useState({
@@ -21,7 +22,7 @@ function NewUser() {
 
   try {
     const res = await axios.post(
-      "http://localhost:5000/api/users",
+      `${API_URL}/api/users`,
       user
     );
 
