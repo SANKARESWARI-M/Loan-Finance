@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+require("dotenv").config();
 const cors = require("cors");
 
 const app = express();
@@ -9,7 +10,7 @@ app.use(express.json());
 // ✅ MongoDB Atlas connection (NO deprecated options)
 mongoose
   .connect(
-    "mongodb+srv://mk3207587_db_user:5OJjnoYtNVICoL7D@cluster0.3tj3pyy.mongodb.net/"
+    process.env.MONGO_URI
   )
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error(err));
