@@ -1,0 +1,171 @@
+body {
+  background: #f4f6f8;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* ===== FORM ===== */
+.form-container {
+  max-width: 650px;
+  margin: 40px auto;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #1f2937;
+}
+
+.form-container input,
+.form-container textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  font-size: 14px;
+}
+
+.form-container textarea {
+  height: 80px;
+  resize: none;
+}
+
+.form-container input:focus,
+.form-container textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+.print-btn {
+  width: 100%;
+  padding: 12px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.print-btn:hover {
+  background: #1e40af;
+}
+
+/* ===== PRINT RECEIPT ===== */
+.print-container {
+  padding: 40px;
+  display: none;
+  font-family: "Times New Roman", serif;
+}
+
+.print-title {
+  text-align: center;
+  font-size: 26px;
+  letter-spacing: 2px;
+}
+
+.print-subtitle {
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.print-details p {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dotted #999;
+  padding: 8px 0;
+  font-size: 16px;
+}
+
+.print-details span {
+  font-weight: bold;
+}
+
+/* ===== SIGNATURE ===== */
+.signature-section {
+  margin-top: 60px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.signature-box {
+  width: 40%;
+  text-align: center;
+}
+
+.signature-line {
+  border-top: 1px solid black;
+  margin-bottom: 8px;
+}
+
+/* ===== PRINT MODE ===== */
+@media print {
+  body {
+    background: none;
+  }
+
+  .form-container {
+    display: none;
+  }
+
+  .print-container {
+    display: block;
+  }
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 6px;
+}
+
+
+/* ===== FORM GROUP (HORIZONTAL) ===== */
+.form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  width: 180px;              /* fixed label width */
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.form-group input,
+.form-group textarea {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  font-size: 14px;
+}
+
+.form-group textarea {
+  height: 70px;
+  resize: none;
+}
+
+/* Focus */
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+

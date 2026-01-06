@@ -1,0 +1,161 @@
+/* ===== Base Layout ===== */
+.ledger-container {
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+.ledger-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #1f2937;
+}
+
+/* ===== Back Button ===== */
+.back-btn {
+  background: #374151;
+  color: #ffffff;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.back-btn:hover {
+  background: #111827;
+}
+
+/* ===== Search Section ===== */
+.search-section {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.search-section input {
+  flex: 1;
+  padding: 8px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.search-section button {
+  padding: 8px 16px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-section button:hover {
+  background: #1e40af;
+}
+
+/* ===== Loan Header ===== */
+.ledger-container h3 {
+  margin: 15px 0;
+  color: #111827;
+}
+
+/* ===== Ledger Table ===== */
+.ledger-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.ledger-table th,
+.ledger-table td {
+  border: 1px solid #e5e7eb;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.ledger-table th {
+  background: #f3f4f6;
+  font-weight: 600;
+}
+
+.ledger-table tr:nth-child(even) {
+  background: #f9fafb;
+}
+
+/* Credit / Debit Coloring */
+.ledger-table td:nth-child(2) {
+  font-weight: 600;
+}
+
+.ledger-table td:nth-child(2):contains("CREDIT") {
+  color: green;
+}
+
+.ledger-table td:nth-child(2):contains("DEBIT") {
+  color: #dc2626;
+}
+
+/* ===== Transaction Form ===== */
+.transaction-form {
+  margin-top: 25px;
+  padding: 15px;
+  background: #f9fafb;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+}
+
+.transaction-form h4 {
+  margin-bottom: 12px;
+  color: #1f2937;
+}
+
+.transaction-form select,
+.transaction-form input {
+  padding: 8px;
+  margin-right: 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.transaction-form input {
+  width: 160px;
+}
+
+.transaction-form button {
+  padding: 8px 14px;
+  background: #059669;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.transaction-form button:hover {
+  background: #047857;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .search-section {
+    flex-direction: column;
+  }
+
+  .transaction-form input,
+  .transaction-form select {
+    margin-bottom: 8px;
+    width: 100%;
+  }
+
+  .ledger-table th,
+  .ledger-table td {
+    font-size: 12px;
+    padding: 6px;
+  }
+}
