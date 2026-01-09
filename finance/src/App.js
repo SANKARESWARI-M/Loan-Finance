@@ -5,6 +5,9 @@ import NewUser from "./Components/User";
 import GoldForm from "./Components/Goldform";
 import Payment from "./Components/Payment";
 import Ledger from "./Components/LoanLedger";
+import DailyLog from "./Components/DailyLog";
+
+
 
 function App() {
   return (
@@ -14,6 +17,7 @@ function App() {
       <Route path="/new-loan" element={<GoldForm />} />
       <Route path="/payment" element={<Payment />} />
       <Route path="/ledger/:loanId" element={<Ledger />} />
+      <Route path="/daily-log" element={<DailyLog />} />
     </Routes>
   );
 }

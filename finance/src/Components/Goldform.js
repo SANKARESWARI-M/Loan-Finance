@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 const API_URL = process.env.REACT_APP_API_URL; 
 
 
+
 function GoldLoanForm() {
   const navigate = useNavigate();
 
@@ -186,7 +187,8 @@ function GoldLoanForm() {
 
       {/* PRINT RECEIPT */}
       <div className="print-container">
-        <h1 className="print-title">GOLD LOAN RECEIPT</h1>
+        <h1 className="print-title">SM Finance</h1>
+        <h2 className="print-subtitle">GOLD LOAN RECEIPT</h2>
         <hr />
         <div className="print-details">
         <p><b>Loan No:</b> {formData.loanId}</p>

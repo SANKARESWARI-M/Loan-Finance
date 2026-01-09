@@ -19,10 +19,14 @@ mongoose
 const userRoutes = require("./Routes/userRoutes");
 const loanRoutes = require("./Routes/loanRoutes");
 const ledgerRoutes= require("./Routes/ledgerRoute");
+const dailyLogRoutes=require("./Routes/dailyLogRoute");
 
 app.use("/api/users", userRoutes);
 app.use("/api/loans", loanRoutes);
 app.use("/api/ledger",ledgerRoutes);
+// app.use("/api/daily-logs",DailyLog);
+app.use("/api/daily-logs",dailyLogRoutes);
+
 
 const PORT = 5000;
 app.listen(PORT, () =>

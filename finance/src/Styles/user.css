@@ -1,0 +1,67 @@
+/* Main container */
+.gold-form-container {
+  max-width: 450px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+/* Heading */
+.gold-form-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+/* Inputs & textarea */
+.gold-form-container input,
+.gold-form-container textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+/* Focus effect */
+.gold-form-container input:focus,
+.gold-form-container textarea:focus {
+  border-color: #007bff;
+}
+
+/* Textarea */
+.gold-form-container textarea {
+  resize: none;
+  height: 80px;
+}
+
+/* Button */
+.gold-form-container button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: #ffffff;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Button hover */
+.gold-form-container button:hover {
+  background-color: #0056b3;
+}
+
+/* Mobile responsive */
+@media (max-width: 480px) {
+  .gold-form-container {
+    margin: 20px;
+    padding: 20px;
+  }
+}

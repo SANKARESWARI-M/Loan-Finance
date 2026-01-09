@@ -60,7 +60,7 @@ function Ledger() {
 
   // Calculate running balance and total interest
   let runningBalance = 0;
-  let runningInterest = 0;
+  let totalInterest = 0;
 
   const ledgerWithColumns = ledgerEntries.map(entry => {
     let debit = 0, credit = 0, interest = 0;
@@ -69,12 +69,13 @@ function Ledger() {
     else if (entry.type === "CREDIT") credit = entry.amount;
     else if (entry.type === "INTEREST") {
       interest = entry.amount;
-      runningInterest += interest;
+      totalInterest += interest; // INTEREST is tracked separately
     }
 
-    runningBalance = runningBalance + credit + interest - debit;
+    // Only DEBIT and CREDIT affect balance
+    runningBalance = runningBalance + credit - debit;
 
-    return { ...entry, debit, credit, interest, balance: runningBalance, totalInterest: runningInterest };
+    return { ...entry, debit, credit, interest, balance: runningBalance, totalInterest };
   });
 
   return (
@@ -86,7 +87,29 @@ function Ledger() {
         <div className="loan-info">
           <p><b>Customer ID:</b> {loanDetails.customerId}</p>
           <p><b>Loan Amount:</b> ₹{loanDetails.loanAmount}</p>
-          <p><b>Status:</b> {loanDetails.status}</p>
+          <p>
+            <b>Status:</b>
+            <select
+              value={loanDetails.status}
+              onChange={async (e) => {
+                const newStatus = e.target.value;
+                try {
+                  const res = await axios.patch(
+                    `http://localhost:5000/api/ledger/update-loan-status/${loanId}`,
+                    { status: newStatus }
+                  );
+                  setLoanDetails(res.data);
+                  alert("Status updated");
+                } catch (err) {
+                  console.error(err);
+                  alert("Failed to update status");
+                }
+              }}
+            >
+              <option value="ACTIVE">ACTIVE</option>
+              <option value="CLOSED">CLOSED</option>
+            </select>
+          </p>
           <p><b>Interest Rate:</b> {loanDetails.interestRate || 2}%</p>
         </div>
       )}
@@ -109,11 +132,11 @@ function Ledger() {
             {ledgerWithColumns.map((entry, i) => (
               <tr key={i}>
                 <td>{new Date(entry.date).toLocaleDateString()}</td>
-                <td>₹{entry.debit || "-"}</td>
-                <td>₹{entry.credit || "-"}</td>
-                <td>₹{entry.interest || "-"}</td>
-                <td>₹{entry.totalInterest || "-"}</td>
-                <td>₹{entry.balance}</td>
+                <td>{entry.debit || "-"}</td>
+                <td>{entry.credit || "-"}</td>
+                <td>{entry.interest || "-"}</td>
+                <td>{entry.totalInterest || "-"}</td>
+                <td>{entry.balance}</td>
                 <td>{entry.note || "-"}</td>
               </tr>
             ))}

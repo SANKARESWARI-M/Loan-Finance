@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "../Styles/GoldForm.css";
+import "../Styles/user.css";
+import { useNavigate } from "react-router-dom";
 const API_URL = process.env.REACT_APP_API_URL; 
 
+
+
 function NewUser() {
+  const navigate = useNavigate();
+  
   const [user, setUser] = useState({
     name: "",
     address: "",
@@ -36,33 +41,36 @@ function NewUser() {
 };
 
   return (
-    <div style={{ padding: "30px" }}>
-      <h2>New User</h2>
+    <><button className="print-btn" onClick={() => navigate("/")}>⬅ Back</button>
+  <div className="gold-form-container">
+    <h2>New User</h2>
 
-      <input
-        name="name"
-        placeholder="Name"
-        value={user.name}
-        onChange={handleChange}
-      /><br /><br />
+    <input
+      name="name"
+      placeholder="Name"
+      value={user.name}
+      onChange={handleChange}
+    /><br /><br />
 
-      <textarea
-        name="address"
-        placeholder="Address"
-        value={user.address}
-        onChange={handleChange}
-      /><br /><br />
+    <textarea
+      name="address"
+      placeholder="Address"
+      value={user.address}
+      onChange={handleChange}
+    /><br /><br />
 
-      <input
-        name="phone"
-        placeholder="Phone"
-        value={user.phone}
-        onChange={handleChange}
-      /><br /><br />
+    <input
+      name="phone"
+      placeholder="Phone"
+      value={user.phone}
+      onChange={handleChange}
+    /><br /><br />
 
-      <button onClick={handleSubmit}>Save User</button>
-    </div>
-  );
+    <button onClick={handleSubmit}>Save User</button>
+  </div>
+  </>
+);
+
 }
 
 export default NewUser;

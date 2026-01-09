@@ -3,40 +3,9 @@ const router = express.Router();
 const Loan = require("../Models/Loan");
 const Counter = require("../Models/counter");
 const Ledger = require("../Models/Ledger");
+const DailyLog=require("../Models/DailyLog");
+const Customer=require("../Models/customer");
 
-
-// Create new loan
-// router.post("/create", async (req, res) => {
-//   try {
-//     // Get and increment loan counter
-//     const counter = await Counter.findOneAndUpdate(
-//       { name: "loan" },
-//       { $inc: { value: 1 } },
-//       { new: true, upsert: true }
-//     );
-
-//     // Start at 500 if first time
-//     if (!counter.value || counter.value < 500) {
-//       counter.value = 500;
-//       await counter.save();
-//     }
-
-//     const loanId = `A-${counter.value}`;
-
-//     const loan = new Loan({
-//       loanId,
-//       ...req.body,
-//       outstandingAmount: req.body.loanAmount  // set outstandingAmount = loanAmount
-
-//     });
-
-//     await loan.save();
-//     res.status(201).json(loan);
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).json({ error: err.message });
-//   }
-// });
 router.post("/create", async (req, res) => {
   try {
     // Increment loan counter
@@ -78,6 +47,20 @@ router.post("/create", async (req, res) => {
     });
 
     res.status(201).json(loan);
+
+  const customerData = await Customer.findOne({
+  customerId: loan.customerId
+});
+
+await DailyLog.create({
+  type: "LOAN",
+  referenceId: loanId,
+  customerId: loan.customerId,
+  customerName: customerData?.name || "Unknown",
+  debit: loan.loanAmount,
+  credit: 0,
+  note: "Gold loan disbursed"
+});
 
   } catch (err) {
     console.error(err);
